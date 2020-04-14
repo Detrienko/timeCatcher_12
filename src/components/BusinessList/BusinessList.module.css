@@ -1,0 +1,74 @@
+.businessListWrapper{
+	position: absolute;
+	top: 0;
+	text-align: left;
+	width: 20%;
+	height: auto;
+	min-height: 100%;
+	color: #FFF;
+	background: #161B1F;
+}
+
+.TimeCatcherLogoText{
+	font-size: 1.4rem;
+	margin-top: .7rem;
+	margin-left: 3rem;
+	font-weight: 300;
+}
+
+.createBusinessBtn{
+	background: none;
+	border: none;
+	color: #FFF;
+}
+
+.addNewBusinessWrapper{
+  bottom: 1rem;
+  left: 1rem;		
+  width: 400px;
+  position: fixed;
+  display: flex;
+  color: #B3B3B3;
+}
+
+.addNewBusinessWrapper:hover{
+	color: #FFF;
+}
+
+.plusBtn{
+  background-color: #d44949;
+  height: 35px;
+  width: 35px;
+  outline: 0;
+  display: block;
+  color: #fff;
+  border-radius: 100%;
+  bottom: 0;
+}
+
+.plusBtn:hover{
+  cursor: default;
+}
+
+.btnText{
+	transform: translateY(27%);
+	font-size: 1rem;
+	margin-left: .5rem;
+}
+
+.plus{
+  text-align: center;
+  line-height: 35px;
+  font-size: 30px;
+}
+
+.listIcon{
+	width: 20px;
+	position: absolute;
+	left: 2rem;
+}
+
+.myBussinesTitle{
+	margin-top: 2rem;
+	margin-left: 1rem;
+}

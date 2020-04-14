@@ -1,0 +1,63 @@
+
+.mainDisplayWrapper{
+	width: 80%;
+	margin-left: 20%;
+	display: inline-block;
+	text-align: center;
+}
+
+.timers{
+	display: block;
+}
+
+.timerWrapper{
+	display: inline-block;
+}
+
+.switchBtnWrapper{
+	display: inline-block;
+	position: absolute;
+	top: 11.2rem;
+	transform: translateX(2rem);
+}
+
+.switchBtn{
+	background-color: #202b33;
+	border: solid 1px transparent;
+	border-radius: 4px;
+	padding: 10px 20px;
+	color: #ffffff;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.settingsWrapper{
+	text-align: right;
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+	margin-right: 1.5rem;
+}
+.settings{
+	display: inline-flex;
+	justify-content: flex-end;
+	flex-basis: 0;
+	height: auto;
+	color: #B3B3B3;
+}
+.settings:hover{
+	color: #FFF;
+}
+.settingsImage{
+	width: 1.130rem;
+	margin-right: .2rem;
+	transform: translateY(-5%);
+}
+
+.addHoursBtn{
+	padding: .5rem 1.3rem .5rem 1.3rem;
+	color: #FFF;
+	background: #00CC66;
+	border: none;
+	font-weight: 600;
+	outline: none;
+}

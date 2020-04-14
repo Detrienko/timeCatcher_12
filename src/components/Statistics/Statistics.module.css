@@ -1,0 +1,16 @@
+.statisticsWrapper{
+	position: absolute;
+	padding: 0;
+	margin-top: 3rem;
+	left: 60%;
+	transform: translateX(-50%);
+	font-size: 1.5rem;
+	font-weight: 300;
+}
+
+.progress{
+	font-size: 1.1rem;
+	margin: 0;
+	text-align: left;
+	margin-bottom: .5rem;
+}
