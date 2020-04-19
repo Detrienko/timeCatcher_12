@@ -76,5 +76,7 @@ export const saveTimerId = (timerId, id) => {
 	}
 }
 
-export default {initializeStopWatches, deleteStopWatch,addStopWatch}
+
+
+export default {initializeStopWatches, deleteStopWatch, addStopWatch}
 

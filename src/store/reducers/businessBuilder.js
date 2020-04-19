@@ -64,32 +64,6 @@ const reducer = (state=initialState, action) => {
 				for(let i = 0; i < newBusiness.length; i++){
 					newBusiness[i].isShown = false;
 				}	
-				
-				// let newBusinessData = {
-				// 	id: action.data.id,
-				// 	title: action.data.title,
-				// 	totalHours: {
-	   //    			  hours: action.data.totalHours.hours,
-	   //    			  minutes: action.data.totalHours.minutes
-	   //    			},
-	   //    			description: action.data.description,
-				// 	progress: action.data.progress, 
-				// 		goalHours: action.data.goalHours,
-	   //    				daylyGoal: {
-	   //    				  hours: action.data.daylyGoal.hours,
-	   //    				  minutes: action.data.daylyGoal.minutes
-	   //    				},
-	   //    				weeklyGoal: {
-	   //    				  hours: action.data.weeklyGoal.hours,
-	   //    				  minutes: action.data.weeklyGoal.minutes
-	   //    				},
-	   //    				monthlyGoal:{
-	   //    				  hours: action.data.monthlyGoal.hours,
-	   //    				  minutes: action.data.monthlyGoal.minutes
-	   //    				},
-	   //    				stopWatchIsShown: true,
-	   //    				isShown: true
-	   //    			}
 
 				let newBusinessData = {
 					id: action.data.id,
@@ -98,6 +72,7 @@ const reducer = (state=initialState, action) => {
 	      			  hours: action.data.totalHours.hours,
 	      			  minutes: action.data.totalHours.minutes
 	      			},
+	      			goalHours: action.data.goalHours,
 	      			description: action.data.description,
 					progress: action.data.progress, 
 	      				stopWatchIsShown: true,
@@ -115,6 +90,22 @@ const reducer = (state=initialState, action) => {
 				return newState;
 			}	
 
+		case actionTypes.UPDATE_DATA:
+			{
+				let newBusiness = [...state.business];
+				let index = newBusiness.findIndex(el=>el.id==action.id);
+				console.log(action.data.title)
+				newBusiness[index].title = action.data.title;
+				newBusiness[index].goalHours = action.data.goal
+
+				let newState = {
+					business: newBusiness,
+					loading: false,
+					error: null
+				}
+				return newState;	
+			}	
+
 		case actionTypes.DELETE_BUSINESS:
 			{
 				let newBusiness = [...state.business];
@@ -128,7 +119,6 @@ const reducer = (state=initialState, action) => {
 					error: null
 				}
 				return newState;	
-
 			}
 		case actionTypes.SWITCH_BUSINESS_TAB:
 			{
@@ -146,68 +136,35 @@ const reducer = (state=initialState, action) => {
 			}
 
 		case actionTypes.ADD_WORKING_HOURS:
-			let newBusiness9 = [...state.business];
-			let index9 = newBusiness9.findIndex((el)=>el.id==action.id);
-			let currentTotalHours = newBusiness9[index9].totalHours;  
-			let currentStopWatchTime = newBusiness9[index9].currentStopwatchTime;
-			let currentMiniStopwatchTime = newBusiness9[index9].currentMiniStopwatchTime;
-			let currentCountdownTime = newBusiness9[index9].currentCountdownTime;;
-
-			if(newBusiness9[index9].timerOn && newBusiness9[index9].timerTime>59999){
-				alert('Would you like to stop timer and add your hours?')
-			}
-			if(newBusiness9[index9].timerOn && newBusiness9[index9].timerTime<60000){
-				alert('Work at least 1 minute');
-			}
-
-			if(!newBusiness9[index9].timerOn){
-				if(newBusiness9[index9].stopWatchIsShown){
-					if(newBusiness9[index9].timerTime<60000){
-						alert('Work at least 1 minute!');
-						return state;
-					}
-					newBusiness9[index9].totalHours.hours = parseInt(currentTotalHours.hours, 10) + parseInt(currentStopWatchTime.hours, 10);
-					newBusiness9[index9].totalHours.minutes = parseInt(currentTotalHours.minutes, 10) + parseInt(currentStopWatchTime.minutes, 10);
-					if(newBusiness9[index9].totalHours.minutes>59){
-						let restMinutes = newBusiness9[index9].totalHours.minutes - 60;
-						newBusiness9[index9].totalHours.minutes=restMinutes;
-						newBusiness9[index9].totalHours.hours +=1;
-					}			
-				}
-			}
-
-				currentStopWatchTime.hours = '00';
-				currentStopWatchTime.minutes = '00';
-				currentStopWatchTime.seconds = '00';
-				currentStopWatchTime.centiseconds = '00';
-				
-				// currentCountdownTime.hours = '00';         temporarily removed__________temporarily removed
-				// currentCountdownTime.minutes = '00'; 		temporarily removed    temporarily removed
-				// currentCountdownTime.seconds = '00';      temporarily removed    temporarily removed
-
-				// currentMiniStopwatchTime.hours = '00';
-				// currentMiniStopwatchTime.minutes = '00';
-				// currentMiniStopwatchTime.seconds = '00';
-
-				newBusiness9[index9].timerTime = 0;
-				newBusiness9[index9].timerTimeCountDown = 0;
-				newBusiness9[index9].miniTimerTime = 0;
-
-
-				// clear both timers:
-
-			let newState9 = {
-				business: newBusiness9
-			} 
-
-			return newState9	
-
-		case actionTypes.FETCH_BUSINESSDATA_BEGIN:
 			{
-				let newState = {...state};
-				newState.loading = true;
+			let newBusiness = [...state.business];
+			let index = newBusiness.findIndex((el)=>el.id==action.stopWatchData.businessId);
+
+			newBusiness[index].totalHours = {...action.businesses[index].totalHours}
+
+				let newState = {
+					business: newBusiness,
+					loading: false,
+					error: null
+				} 
+
 				return newState;
-			}	
+			}
+
+			case actionTypes.UPDATE_PROGRESS:
+				{
+				let newBusiness = [...state.business];
+					console.log(action.progress)
+					newBusiness.progress = action.progress;
+
+					let newState = {
+						business: newBusiness,
+						loading: false,
+						error: null
+					}
+					return newState;
+				}	
+
 		case actionTypes.FETCH_BUSINESSDATA_SUCCESS:
 			{
 				let newBusiness = [];
@@ -223,7 +180,7 @@ const reducer = (state=initialState, action) => {
 				else{
 					let newBusinessDataObj;
 					for(let i = 0; i<idOfBusinesses.length; i++){
-						let currentBusiness = action.userBusinesses.businesses[idOfBusinesses[i]];	
+						let currentBusiness = action.userBusinesses.businesses[idOfBusinesses[i]];
 					newBusinessDataObj = {
 						id: idOfBusinesses[i],
 						title: currentBusiness.title,
@@ -231,16 +188,14 @@ const reducer = (state=initialState, action) => {
 	      				  hours: currentBusiness.totalHours.hours,
 	      				  minutes: currentBusiness.totalHours.minutes
 	      				},
-						goalHours: currentBusiness.goals.goalHours,
+						goalHours: currentBusiness.goalHours,
 						description: currentBusiness.description,
 						progress: currentBusiness.progress,
-
-					isShown: false,
+						isShown: false,
 					}
 						newBusiness.push(newBusinessDataObj)
 					}
 					newBusiness[0].isShown = true;
-
 					let newState = {
 						business: newBusiness,
 						loading: false,

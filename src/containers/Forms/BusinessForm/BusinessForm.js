@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 
 import * as stopWatchActions from '../../../store/actions/stopWatch';
 
-import { firestoreConnect } from 'react-redux-firebase'; 
 import { compose } from 'redux';
 
 class BusinessForm extends Component {
@@ -13,18 +12,6 @@ class BusinessForm extends Component {
   state = {
     title: '',
     goalHours: '',
-    weeklyGoal: {
-      hours: '',
-      minutes: ''
-    },
-    daylyGoal: {
-      hours: '',
-      minutes: ''
-    },
-    monthlyGoal:{
-    hours: '',
-    minutes: ''
-    },
   }
 
   titleHandler = (e) => {
@@ -58,54 +45,6 @@ class BusinessForm extends Component {
     }  }
 
   addBusiness = () => {
-
-    //     let data = {
-    //   id: this.state.title + '_' + Math.random().toString(36).substr(2, 9),
-    //   title: this.state.title,
-    //   goalHours: this.state.goalHours,
-    //   weeklyGoal: {
-    //     hours: this.state.weeklyGoal.hours,
-    //     minutes: this.state.weeklyGoal.minutes
-    //   },
-    //   daylyGoal: {
-    //     hours: this.state.daylyGoal.hours,
-    //     minutes: this.state.daylyGoal.minutes
-    //   },
-    //   monthlyGoal:{
-    //     hours: this.state.monthlyGoal.hours,
-    //     minutes: this.state.monthlyGoal.minutes,
-    //   },
-    //   totalHours: {
-    //         hours: 0,
-    //         minutes: 0
-    //       },
-    //   description: '',
-    //   progress: 0,
-    //   stopWatchIsShown: true,
-    //   countDownIsShown: false,
-    //   currentStopwatchTime: {
-    //     centiseconds: '00',
-    //     hours: '00',
-    //     minutes: '00',
-    //     seconds: '00'
-    //   },
-    //   currentCountdownTime: {
-    //     hours: '00',
-    //     minutes: '00',
-    //     seconds: '00'
-    //   },
-    //   timerTime: 0,
-    //   timerStart: 0,
-    //   timerOn: false,
-    //   timerId: null,
-    //   timerTimeCountDown: 0,
-    //   currentMiniStopwatchTime: {
-    //     hours: '00',
-    //     minutes: '00',
-    //     seconds: '00'
-    //   },
-    //   isShown: true
-    // }
 
     let data = {
       id: this.state.title + '_' + Math.random().toString(36).substr(2, 9),

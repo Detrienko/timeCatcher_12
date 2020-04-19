@@ -19,6 +19,8 @@ class App extends Component {
 
 
 	componentDidMount(){
+		console.log(localStorage.getItem('userId'))
+		this.props.fetchBusinessDataBegin(localStorage.getItem('userId'))
 		this.props.onTryAutoSign()
 	}
 
@@ -56,6 +58,7 @@ class App extends Component {
 
 	const mapDispatchToProps = dispatch => {
 		return{
+			fetchBusinessDataBegin: (id) => (businessBuilder.fetchBusinessDataBegin(id)),
 			onTryAutoSign: () => dispatch(authActions.authCheckState()),
 		}
 	}

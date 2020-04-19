@@ -100,7 +100,10 @@ class Stopwatch extends Component {
   const mapDispatchToProps = dispatch => {
     return{
       saveCurrentStopwatchTime: (time, id, timerTime) => dispatch(actions.saveCurrentStopwatchTime(time, id, timerTime)),
-      clearStopwatch: (id) => dispatch(actions.clearStopwatch(id)),
+      clearStopwatch: (id) => dispatch({
+        type: 'CLEAR_CURRENT_STOPWATCH_TIME',
+        id: id
+      }),
       updateStopwatch: (obj, id) => dispatch(actions.updateStopwatch(obj, id)),
       saveTimerId: (timerId, id) => dispatch(actions.saveTimerId(timerId, id))
     }

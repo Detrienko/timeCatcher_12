@@ -46,7 +46,6 @@ class BusinessBuilder extends Component {
 	render(){
 		let businessData = this.props.business[this.props.business.findIndex((el)=>el.id==this.props.currentBussinessId)]
 		let stopWatchData = this.props.stopWatches[this.props.stopWatches.findIndex((el)=>el.businessId==businessData.id)];
-
 		let settingsModal;
 
 		if(this.state.isSettingsModalShown){
@@ -68,7 +67,7 @@ class BusinessBuilder extends Component {
 				</div>
 				<br/><br/><br/>
 				<button className={classes.addHoursBtn}
-						onClick={()=>this.props.addWorkingHours(businessData.id)} >Add Hours
+						onClick={()=>this.props.addWorkingHours(stopWatchData)} >Add Hours
 				</button>
 				
 				{settingsModal}
@@ -78,7 +77,7 @@ class BusinessBuilder extends Component {
 						<span>Settings</span>
 					</div>
 				</div>
-				<Statistics/>
+				<Statistics progress={businessData.progress} totalHours={businessData.totalHours}/>
 			</div>
 			)
 	}
@@ -94,7 +93,7 @@ class BusinessBuilder extends Component {
 
     const mapDispatchToProps = dispatch => {
     return{
-      addWorkingHours: (id) => dispatch(actions.addWorkingHours(id)),	
+      addWorkingHours: (stopWatchData) => dispatch(actions.addWorkingHours(stopWatchData)),	
       stopWatchOrCountDownIsShownHandler: (id, countDownOrStopwatch) => dispatch(actions.stopWatchOrCountDownIsShownHandler(id, countDownOrStopwatch)),
     }
   }

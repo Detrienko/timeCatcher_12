@@ -1,17 +1,17 @@
 import React from 'react';
 import classes from './Statistics.module.css';
-import Circle from '../UI/Circle/Circle';
+import ProgressBar from '../UI/ProgressBar/ProgressBar';
 
 	const Statistics = (props) =>{
 
-		let hours = 5;
-		let minutes = 10;
+		let hours = props.totalHours.hours;
+		let minutes = props.totalHours.minutes;
 
 		return(
 			<div className={classes.statisticsWrapper}>
 				<span>Total hours: {hours}h{minutes}m</span><br/><br/>
 				<p className={classes.progress}>Progress</p>
-				<Circle/>
+				<ProgressBar progress={props.progress}/>
 			</div>
 			)	
 	}

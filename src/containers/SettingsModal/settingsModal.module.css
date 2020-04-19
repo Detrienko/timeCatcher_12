@@ -18,8 +18,22 @@
   flex-direction: column;
   flex-wrap: wrap;
   z-index: 15;
-  width: 30rem;
+  width: 31rem;
   height: 8rem;
+  background: #FFF;
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.savePopUpContainer{
+  display: block;
+  flex-direction: column;
+  flex-wrap: wrap;
+  z-index: 15;
+  width: 31rem;
+  height: 6rem;
   background: #FFF;
   position: fixed;
   top: 35%;
@@ -110,3 +124,7 @@
   margin-top: .5rem;
 }
 
+
+.red {
+  color: #D44949;
+}

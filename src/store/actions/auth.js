@@ -90,22 +90,7 @@ export const auth = (email, password, isSignIn, hideModal) => {
 		      						  hours: 0,
 		      						  minutes: 0
 		      						},
-									goalHours: 10000,
-
-		      						goals: {
-			      						daylyGoal: {
-			      						  hours: 2,
-			      						  minutes: 0
-			      						},			
-			      						weeklyGoal: {
-			      						  hours: 14,
-			      						  minutes: 0
-			      						},
-			      						monthlyGoal:{
-			      							hours: 56,
-			      							minutes: 0
-			      						},
-			      					},	
+									goalHours: 10000,	
 
 									description: 'It\'s a test bussiness.',
 									progress: 0,

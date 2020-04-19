@@ -126,29 +126,6 @@ case actionTypes.INITIALIZE_STOPWATCHES_SUCCESS:
 				return newState;
 			}
 
-		case actionTypes.CLEAR_CURRENT_STOPWATCH_TIME:
-			{
-				let newStopWatches = [...state.stopWatches];
-				let index = newStopWatches.findIndex((el)=>el.businessId==action.id);
-				if(index==-1){
-					return state;
-				}
-
-				newStopWatches[index].currentStopwatchTime = {
-					hours: '00',
-					minutes: '00',
-					seconds: '00',
-					centiseconds: '00'
-				}
-				newStopWatches[index].timerTime = 0;
-
-				let newState = {
-	  				stopWatches: newStopWatches
-	  			}
-	  			
-				return newState;
-			}
-
 		case actionTypes.SAVE_TIMER_ID:
 			{
 
@@ -199,18 +176,21 @@ case actionTypes.INITIALIZE_STOPWATCHES_SUCCESS:
 					
 			}
 
-		case actionTypes.CLEAR_STOPWATCH:
+		case actionTypes.CLEAR_CURRENT_STOPWATCH_TIME:
 			{
 				let newStopWatches = [...state.stopWatches];
 				let index = newStopWatches.findIndex((el)=>el.businessId==action.id);
+				if(index==-1){
+					return state;
+				}
 
-	      		newStopWatches[index].timerStart = action.timerStart = 0;
-	      		newStopWatches[index].timerTime = action.timerTime = 0;
-
-	      		newStopWatches[index].currentStopwatchTime.centiseconds = '00';
-	      		newStopWatches[index].currentStopwatchTime.seconds = '00';
-	      		newStopWatches[index].currentStopwatchTime.minutes = '00';
-	      		newStopWatches[index].currentStopwatchTime.hours = '00';
+				newStopWatches[index].currentStopwatchTime = {
+					hours: '00',
+					minutes: '00',
+					seconds: '00',
+					centiseconds: '00'
+				}
+				newStopWatches[index].timerTime = 0;
 
 				let newState = {
 	  				stopWatches: newStopWatches
@@ -219,7 +199,29 @@ case actionTypes.INITIALIZE_STOPWATCHES_SUCCESS:
 				return newState;
 			}
 
-		case actionTypes.CLEAR_STOPWATCH_STATE:
+		case actionTypes.CLEAR_STOPWATCH:
+			{
+				let newStopWatches = [...state.stopWatches];
+				let index = newStopWatches.findIndex((el)=>el.businessId==action.stopWatchData.businessId);
+console.log(newStopWatches);
+				console.log(index);
+	      		newStopWatches[index].timerStart  = 0;
+	      		newStopWatches[index].timerTime = 0;
+
+	      		newStopWatches[index].currentStopwatchTime.centiseconds = '00';
+	      		newStopWatches[index].currentStopwatchTime.seconds = '00';
+	      		newStopWatches[index].currentStopwatchTime.minutes = '00';
+	      		newStopWatches[index].currentStopwatchTime.hours = '00';
+
+				let newState = {
+	  				stopWatches: newStopWatches,
+	  				loading: false
+	  			}
+	  			
+				return newState;
+			}
+
+		case actionTypes.CLEAR_CURRENT_STOPWATCH_TIME:
 			{
 				let newState = {
 					stopWatches: [],
