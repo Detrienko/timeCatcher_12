@@ -19,7 +19,6 @@ function ProfileMenu(props){
 	return(
 		<div className={classes.profileMenu}>
 			<ul>
-				<li>My Profile</li>
 				<li onClick={signOutHandler}>Sign out</li>
 			</ul>
 		</div>

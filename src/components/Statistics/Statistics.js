@@ -8,7 +8,7 @@ import ProgressBar from '../UI/ProgressBar/ProgressBar';
 		let minutes = props.totalHours.minutes;
 
 		return(
-			<div className={classes.statisticsWrapper}>
+			<div className={!props.sideBarMenuIsShown ? classes.statisticsWrapperSidebarHidden : classes.statisticsWrapper}>
 				<span>Total hours: {hours}h{minutes}m</span><br/><br/>
 				<p className={classes.progress}>Progress</p>
 				<ProgressBar progress={props.progress}/>

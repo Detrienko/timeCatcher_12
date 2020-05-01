@@ -63,14 +63,18 @@ function Layout(props) {
 
 	if(localStorage.userId){
 		topMenu = <ul className={classes.topMenu}>
-	    			<li className={classes.accountProfile} onClick={profileMenuHandler} ><a href="#">{localStorage.email}</a></li>
+	    			<li className={classes.accountProfile} onClick={profileMenuHandler}>
+		    			<u className={`fa ${"fa-user"}`}></u>
+	    				<a href="#">{localStorage.email}</a>
+	    				<i href="#" className={`fa ${"fa-sort-down"}`}></i>
+	    			</li>
 	    		  </ul> 
 	}
 
 	if(!localStorage.userId){
 		topMenu = <ul className={classes.topMenu}>
-	   				<li className={classes.logIn} onClick={showSignUpModal}><a href="#">Sign Up</a></li>
-	   				<li className={classes.signUp} onClick={showSignInModal}><a href="#">Sign In</a></li>
+	   				<li className={classes.signUp} onClick={showSignUpModal}><a href="#">Sign Up</a></li>
+	   				<li className={classes.signIn} onClick={showSignInModal}><a href="#">Sign In</a></li>
 	    		</ul>
 	}
 

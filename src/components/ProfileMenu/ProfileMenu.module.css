@@ -1,11 +1,11 @@
 .profileMenu{
 	position: absolute;
-	color: black;
-	right: .5rem;
-	top: 3rem;
+	color: #161B1F;
+	right: 1rem;
+	top: 4rem;
 	background: #FFF;
-	height: 70px;
-	width: 150px;
+	height: 35px;
+	width: 15rem;
 }
 
 .profileMenu ul{

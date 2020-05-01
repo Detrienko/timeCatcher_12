@@ -4,6 +4,7 @@ import axios from 'axios';
 import stopWatch from './stopWatch';
 import authActions from './auth';
 
+
 export const addBusiness = (data) => {
 	return dispatch => {
 
@@ -45,8 +46,11 @@ export const updateBusinessData = (updatedData, id) => {
 		let pathGoal = 'businesses.' + businesses[index].id + '.goalHours';
 		let pathTitle = 'businesses.' + businesses[index].id + '.title';
 
-		businesses[index].goalHours = updatedData.goalHours;
+		businesses[index].goalHours = updatedData.goal;
 		businesses[index].title = updatedData.title; 
+
+		console.log(businesses[index].goalHours)
+		console.log(businesses[index].title)
 
 		userRef.update({
 	    			[pathGoal]: businesses[index].goalHours,

@@ -17,7 +17,6 @@ import stopWatch from './store/actions/stopWatch';
 
 class App extends Component {
 
-
 	componentDidMount(){
 		console.log(localStorage.getItem('userId'))
 		this.props.fetchBusinessDataBegin(localStorage.getItem('userId'))

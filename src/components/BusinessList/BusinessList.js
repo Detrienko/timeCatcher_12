@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 
 //actions
 import * as actions from '../../store/actions/businessBuilder';
+import * as siteOptionsActions from '../../store/actions/siteOptions';
+
+
 
 import * as fetchingDataActions from '../../store/actions/businessBuilder';
 
@@ -15,13 +18,11 @@ import BusinessTab from '../BusinessTab/BusinessTab';
 import listIcon from '../../images/icons/listIcon.png';
 import addBusinessIcon from '../../images/icons/addBusinessIcon.png';
 
-import firebase from '../../config/fbConfig';
-
-
 class BusinessList extends Component {
 
   state={
     isBusinessFormShown: false,
+    sideBarMenuIsShown: true,
   }
 
   showBusinessForm = () => {
@@ -37,7 +38,13 @@ class BusinessList extends Component {
     this.setState({isBusinessFormShown: false})
   }
 
+  toggleSidebarMenuHandler = () => {
+    this.props.toggleSidebarMenuHandler(!this.state.sideBarMenuIsShown)
+    this.setState({sideBarMenuIsShown: !this.state.sideBarMenuIsShown});
+  }
+
   render(){
+
     let businessTab;
     if(this.props.business.length==0){
       businessTab = null;
@@ -59,8 +66,11 @@ class BusinessList extends Component {
 
 
   return (
-  	<div className={classes.businessListWrapper}>
-  		<h1 className={classes.TimeCatcherLogoText}>Time Catcher</h1>
+    <div>
+      <button className={classes.toggleSidebarMenuSecond} onClick={this.toggleSidebarMenuHandler}>☰</button>
+  	<div className={this.state.sideBarMenuIsShown ? classes.businessListWrapper : classes.businessListWrapperHidden}>
+      <button className={classes.toggleSidebarMenu} onClick={this.toggleSidebarMenuHandler}>☰</button>
+  		<h1 className={classes.TimeCatcherLogoText}>TimeCatcher</h1>
       <div>
         <p className={classes.myBussinesTitle}>MY BUSSINES</p>
         {businessTab}
@@ -72,6 +82,7 @@ class BusinessList extends Component {
                <span className={classes.btnText}>New business</span>
         </div>
       {businessForm}
+    </div>
     </div>
   );
 }
@@ -88,7 +99,8 @@ class BusinessList extends Component {
     return{
       addBusiness: (data) => dispatch(actions.addBusiness(data)),
       deleteBusiness: (id) => dispatch(actions.deleteBusiness(id)),
-      switchBusinessTab: (id) => dispatch(actions.switchBusinessTab(id))
+      switchBusinessTab: (id) => dispatch(actions.switchBusinessTab(id)),
+      toggleSidebarMenuHandler: (sideBarMenuIsShown) => dispatch(siteOptionsActions.toggleSidebarMenuHandler(sideBarMenuIsShown))
     }
   }
 

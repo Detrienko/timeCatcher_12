@@ -53,17 +53,13 @@ class BusinessBuilder extends Component {
   		}   
 
 		return(
-			<div className={classes.mainDisplayWrapper}>
+			<div className={this.props.sideBarMenuIsShown ? classes.mainDisplayWrapper : classes.mainDisplayWrapperWithHiddenSidebar}>
 				<h2 className={classes.title}>{businessData.title}</h2>
 				<p>{businessData.totalHours.hours}/{businessData.goalHours} hours</p>
 				<div className={classes.timers}>
 					<div className={classes.timerWrapper}>
 						<Stopwatch stopWatchData={stopWatchData} businessData={businessData}/>
-						{/* <CountDown businessData={businessData} isShown={businessData.countDownIsShown}/> */}
 					</div>
-					{/* <div className={classes.switchBtnWrapper}>
-						<button onClick={this.switchTimer} className={classes.switchBtn}>SWITCH</button>
-					</div>	*/}
 				</div>
 				<br/><br/><br/>
 				<button className={classes.addHoursBtn}
@@ -77,7 +73,7 @@ class BusinessBuilder extends Component {
 						<span>Settings</span>
 					</div>
 				</div>
-				<Statistics progress={businessData.progress} totalHours={businessData.totalHours}/>
+				<Statistics sideBarMenuIsShown={this.props.sideBarMenuIsShown} progress={businessData.progress} totalHours={businessData.totalHours}/>
 			</div>
 			)
 	}
@@ -87,7 +83,8 @@ class BusinessBuilder extends Component {
     return {
       stopWatches: state.stopWatch.stopWatches,
       business: state.businessBuilder.business,
-      auth: state.auth
+      auth: state.auth,
+      sideBarMenuIsShown: state.siteOptions.sideBarMenuIsShown
     }
   }
 

@@ -1,9 +1,46 @@
-
+@media only screen and (max-width: 1000px) { 
 .mainDisplayWrapper{
-	width: 80%;
-	margin-left: 20%;
-	display: inline-block;
+		background: #3B3B3B;
+		padding-top: 1rem;
+		margin-left: 0rem;
+		display: block;
+		text-align: center;
+		transition: 0.3s;
+	}
+}
+
+@media only screen and (min-width: 700px) {
+
+	.mainDisplayWrapper{
+		background: #3B3B3B;
+		padding-top: 1rem;
+		margin-left: 23rem;
+		display: block;
+		text-align: center;
+		transition: 0.3s;
+	}
+}
+
+/*FOR SMALL*/
+@media only screen and (max-width: 1000px) { 
+	.mainDisplayWrapperWithHiddenSidebar{
+	background: #3B3B3B;
+	padding-top: 1rem;
+	margin-left: 0rem;
+	display: block;
 	text-align: center;
+	}
+}
+
+@media only screen and (min-width: 700px) {
+	.mainDisplayWrapperWithHiddenSidebar{
+		background: #3B3B3B;
+		padding-top: 1rem;
+		margin-left: 0rem;
+		display: block;
+		text-align: center;
+		transition: 0.3s;		
+	}
 }
 
 .timers{
@@ -33,8 +70,6 @@
 
 .settingsWrapper{
 	text-align: right;
-	margin-top: 1.5rem;
-	margin-bottom: 1.5rem;
 	margin-right: 1.5rem;
 }
 .settings{
@@ -43,6 +78,7 @@
 	flex-basis: 0;
 	height: auto;
 	color: #B3B3B3;
+	margin-bottom: 1rem;
 }
 .settings:hover{
 	color: #FFF;

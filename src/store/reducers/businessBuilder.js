@@ -50,7 +50,7 @@ const initialState = {
 		// },
 	],
 	loading: false,
-	error: null	
+	error: null,
 }
 
 const reducer = (state=initialState, action) => {

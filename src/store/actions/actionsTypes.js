@@ -15,7 +15,6 @@ export const DELETE_BUSINESS = 'DELETE_BUSINESS';
 export const UPDATE_PROGRESS = 'UPDATE_PROGRESS';
 export const UPDATE_DATA = 'UPDATE_DATA';
 
-
 // STOPWATCHES
 
 export const ADD_STOPWATCH = 'ADD_STOPWATCH';
@@ -39,6 +38,10 @@ export const AUTH_SUCCESS = 'AUTH_SUCCESS'
 export const AUTH_FAIL = 'AUTH_FAIL'
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 export const CLEAR_ERROR = 'CLEAR_ERROR';
+
+// siteOptions
+
+export const TOGGLE_SIDEBAR_MENU = 'TOGGLE_SIDEBAR_MENU';
 
 
 
